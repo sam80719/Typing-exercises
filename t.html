@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+	<script type="text/javascript" src="/Pratice/jquery-3.2.1.js"></script> 
+	
+	<style>	
+	.question{
+	width: 100%;
+	height: auto;
+	background: orange;
+	}
+	.reply{
+	width: 100%;
+	height:auto;
+	background: pink;
+	border: dotted 1px;
+	}
+	.t1{
+	width: 80%;
+	}
+	.clock{
+	width: auto;
+	height:auto;
+	margin-left: 5px;	
+	}
+
+
+
+	body{
+	margin: 0;
+	}
+	</style>
+	<script type="text/javascript" >		
+
+
+		/*check keyin */	
+		function do_check(){
+			var msgs ="";
+			str  = $("#textbox1")[0].innerHTML.replace(/<\/?span[^>]*>/g,"");
+			str1 = str.substr(0,str.length);
+			str2 = $("#textbox2").val();
+			var ans_str="";
+			
+			for (var i=0; i<str1.length; i++){
+				if (str1[i] == str2[i]){
+							
+					ans_str+="<span style=color:green>"+str1[i]+"</sqan>"
+ 					msgs='well done';
+ 				
+ 				}else{
+ 					
+ 					ans_str+="<span style=color:red>"+str1[i]+"</sqan>"
+ 					msgs='wrong answer';
+ 				
+ 				}
+		    	
+			}
+			//console.log('#5',ans_str)
+			$("#textbox1")[0].innerHTML=ans_str
+			return msgs;			
+  		} 
+
+
+
+
+
+		var count=0
+		var c=10;
+		var t;
+		function timedCount(){
+		
+			document.getElementById('txt').value=c
+			c-=1
+			t=setTimeout(function(){timedCount()},1000)
+	
+ 			if (c<-1) {
+
+ 				if(confirm('time up')==true){
+					c=2
+					count=0
+					document.getElementById('txt').value=c
+ 					clearTimeout(t);
+				
+ 				}
+
+ 			}			
+ 		
+ 		}
+
+		function stopCount(){
+			clearTimeout(t)
+		}
+
+		$(document).ready(function(){
+			$( ".t1" ).keydown(function(event) {
+				if(count==0) timedCount()			
+				if(event.keyCode==32){
+					console.log('#1',do_check())
+
+				 str3 = str2.trim(); // filiter white space
+
+
+ 				if (str1==str3){
+ 					clearTimeout(t); // if textbox2 same as textbox1, timer will stop								
+ 				}
+							
+				}
+
+				count++	
+			});
+
+
+
+		});
+	
+	</script>
+	</head>
+<body >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<div class="question" >
+		<div id="textbox1">讚嘆java script!</div>
+	</div>
+	<div class="reply" >
+		<input type="text" class="t1" id="textbox2"  value="">
+	</div>
+	<button onclick="do_check()">check</button><br>
+
+
+	<form>
+		<input type="button" value="start" onClick="timedCount()">
+		<input type="text" id="txt">
+		<input type="button" value="stop" onClick="stopCount()">
+	</form>
+
+</body>
+</html>

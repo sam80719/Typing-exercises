@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+	.incorrect
+{
+  background: #ff8888;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<input id="textbox1" type="text">
+<input id="textbox2" type="text">
+$(document).ready(function(){
+function do_check()
+{
+  var str1 = $("#textbox1").val();
+  var str2 = $("#textbox2").val();
+
+  if (str1 == str2)
+  {
+    $(":text").removeClass("incorrect");
+    alert("equal");
+  }
+  else
+  {
+    $(":text").addClass("incorrect");
+    alert("not equal");
+  }
+
+<button onclick="do_check()">check</button>
+</head>
+<body>
+
+}
+
+</body>
+</html>
