@@ -68,7 +68,7 @@
 
 
 		var count=0
-		var c=10;
+		var c=15; //count 15s
 		var t;
 		function timedCount(){
 		
@@ -79,7 +79,7 @@
  			if (c<-1) {
 
  				if(confirm('time up')==true){
-					c=2
+					c=2 //after result recount in 2s
 					count=0
 					document.getElementById('txt').value=c
  					clearTimeout(t);
